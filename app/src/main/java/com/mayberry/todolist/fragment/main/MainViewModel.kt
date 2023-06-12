@@ -1,4 +1,4 @@
-package com.mayberry.todolist.viewModel
+package com.mayberry.todolist.fragment.main
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
