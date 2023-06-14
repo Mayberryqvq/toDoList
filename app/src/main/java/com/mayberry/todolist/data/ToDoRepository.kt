@@ -23,8 +23,12 @@ class ToDoRepository(context: Context) {
         toDoDao.deleteToDoData(toDo)
     }
 
-    fun deleteAllToDoData() {
+    suspend fun deleteAllToDoData() {
         toDoDao.deleteAllToDoData()
+    }
+
+    suspend fun updateToDoData(toDo: ToDo) {
+        toDoDao.updateToDoData(toDo)
     }
 
     //-------- 操作tagDao --------

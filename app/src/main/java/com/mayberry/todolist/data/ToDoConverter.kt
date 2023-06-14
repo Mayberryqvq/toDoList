@@ -1,4 +1,4 @@
-package com.mayberry.todolist
+package com.mayberry.todolist.data
 
 import androidx.room.TypeConverter
 import com.mayberry.todolist.data.model.Priority

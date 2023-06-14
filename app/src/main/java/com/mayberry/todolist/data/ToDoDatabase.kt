@@ -5,7 +5,6 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.mayberry.todolist.ToDoConverter
 import com.mayberry.todolist.data.dao.TagDao
 import com.mayberry.todolist.data.dao.ToDoDao
 import com.mayberry.todolist.data.model.TagData
@@ -31,6 +30,5 @@ abstract class ToDoDatabase: RoomDatabase() {
             return INSTANCE!!
         }
     }
-
 
 }

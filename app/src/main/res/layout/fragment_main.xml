@@ -15,8 +15,10 @@
         android:src="@drawable/main_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/joyful_face"
@@ -46,5 +48,144 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5"
         tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/audiowide"
+        android:text="Schedules"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/bg"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/bg"
+        app:layout_constraintTop_toTopOf="@id/bg" />
+
+    <ImageView
+        android:id="@+id/deleteAllBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_delete"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topTaskContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/round_solid_shape"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView" >
+
+        <TextView
+            android:id="@+id/top_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:maxLines="2"
+            android:text="Have a lesson of Android"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/top_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="2023-6-14"
+            android:textColor="@color/light_gray"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/top_title"
+            app:layout_constraintTop_toBottomOf="@id/top_title" />
+
+        <TextView
+            android:id="@+id/top_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="A user interface element that displays text to the user. To provide user-editable text, see EditText.
+The following code sample shows a typical use, with an XML layout and code to modify the contents of the text view"
+            app:layout_constraintEnd_toEndOf="@id/top_title"
+            app:layout_constraintStart_toStartOf="@id/top_time"
+            app:layout_constraintTop_toBottomOf="@id/top_time" />
+
+        <TextView
+            android:id="@+id/top_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_solid_shape"
+            android:backgroundTint="#FDE4E3"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="Android"
+            android:textColor="#ED8E87"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/top_priority"
+            app:layout_constraintStart_toStartOf="@id/top_description"
+            app:layout_constraintTop_toTopOf="@+id/top_priority" />
+
+        <ImageView
+            android:id="@+id/top_pen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/pen"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/top_description"
+            app:layout_constraintTop_toBottomOf="@id/top_description" />
+
+        <ImageView
+            android:id="@+id/top_priority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/red_ball"
+            app:layout_constraintBottom_toBottomOf="@+id/top_pen"
+            app:layout_constraintEnd_toStartOf="@+id/top_pen"
+            app:layout_constraintTop_toTopOf="@+id/top_pen" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bg"
+        app:layout_constraintEnd_toEndOf="@+id/topTaskContainer"
+        app:layout_constraintStart_toStartOf="@+id/topTaskContainer"
+        app:layout_constraintTop_toBottomOf="@+id/topTaskContainer" />
+
+    <Button
+        android:id="@+id/addBtn"
+        android:layout_width="210dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/round_solid_shape"
+        android:drawableLeft="@drawable/bag"
+        android:paddingLeft="70dp"
+        android:text="Add New"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

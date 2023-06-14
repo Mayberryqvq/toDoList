@@ -6,6 +6,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import com.mayberry.todolist.data.model.ToDo
 
 @Dao
@@ -21,6 +22,9 @@ interface ToDoDao {
     suspend fun deleteToDoData(toDo: ToDo)
 
     @Query("delete from todo_table")
-    fun deleteAllToDoData()
+    suspend fun deleteAllToDoData()
+
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun updateToDoData(toDo: ToDo)
 
 }
