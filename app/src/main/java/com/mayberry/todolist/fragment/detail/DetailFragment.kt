@@ -207,18 +207,11 @@ class DetailFragment : Fragment() {
         binding.dateBtn.setOnClickListener {
             DatePickerDialog(
                 requireContext(),
-                object:DatePickerDialog.OnDateSetListener {
-                    override fun onDateSet(
-                        view: DatePicker?,
-                        year: Int,
-                        month: Int,
-                        dayOfMonth: Int
-                    ) {
-                        mDate.year = year
-                        mDate.month = month
-                        mDate.day = dayOfMonth
-                        binding.dateBtn.text = "$year-${month + 1}-$dayOfMonth"
-                    }
+                { _, year, month, dayOfMonth ->
+                    mDate.year = year
+                    mDate.month = month
+                    mDate.day = dayOfMonth
+                    binding.dateBtn.text = "$year-${month + 1}-$dayOfMonth"
                 },
                 mDate.year, mDate.month, mDate.day
             ).show()

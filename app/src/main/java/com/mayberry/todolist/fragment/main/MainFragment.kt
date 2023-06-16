@@ -1,5 +1,6 @@
 package com.mayberry.todolist.fragment.main
 
+import android.app.Application
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,7 +23,7 @@ import com.mayberry.todolist.showToast
 class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
-    private val mainViewModel: MainViewModel by viewModels()
+    private val mainViewModel: MainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
     private val mAdapter: ToDoAdapter by lazy { ToDoAdapter() }
 
     override fun onCreateView(
@@ -35,11 +38,14 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         mainViewModel.toDoDataList.observe(viewLifecycleOwner) {
+            //设置提示状态的变化
             checkStatus(it)
             if (it.isNotEmpty()) {
+                //第一条数据显示在头部
                 initTopToDo(it[0])
             }
             if (it.size > 1) {
+                //第一条数据更新到Adapter中，包含fromIndex，不包含toIndex
                 mAdapter.setData(it.subList(1, it.size))
             } else {
                 mAdapter.setData(emptyList())
@@ -50,6 +56,7 @@ class MainFragment : Fragment() {
             findNavController().navigate(action)
         }
         binding.topTaskContainer.setOnClickListener {
+            //获取第一条数据
             val data = mainViewModel.toDoDataList.value!![0]
             val action = MainFragmentDirections.actionMainFragmentToDetailFragment(data)
             findNavController().navigate(action)
@@ -60,6 +67,7 @@ class MainFragment : Fragment() {
         }
     }
 
+    /** 设置是否显示控件 **/
     private fun checkStatus(dataList: List<ToDo>) {
         if (dataList.isNotEmpty()) {
             binding.joyfulFace.visibility = View.VISIBLE
@@ -74,6 +82,7 @@ class MainFragment : Fragment() {
         }
     }
 
+    /** 初始化头部信息 **/
     private fun initTopToDo(toDo: ToDo) {
         binding.topTitle.text = toDo.title
         binding.topTime.text = "${toDo.date.year}.${toDo.date.month + 1}.${toDo.date.day}"
@@ -87,11 +96,13 @@ class MainFragment : Fragment() {
         }
     }
 
+    /** 初始化recyclerView **/
     private fun initRecyclerView() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         swipeToDelete()
     }
 
+    /** 滑动删除 **/
     private fun swipeToDelete() {
         val touchHelper = ItemTouchHelper(object: ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             override fun onMove(
