@@ -26,5 +26,4 @@ interface ToDoDao {
     //更新数据
     @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateToDoData(toDo: ToDo)
-
 }

@@ -18,12 +18,14 @@ abstract class ToDoDatabase: RoomDatabase() {
 
     abstract fun getTagDao(): TagDao
 
+    //创建单例对象
     companion object {
         @Volatile
         private var INSTANCE: ToDoDatabase? = null
 
         fun getDatabase(context: Context): ToDoDatabase {
             if (INSTANCE != null) return INSTANCE!!
+            //创建对象
             synchronized(this) {
                 if (INSTANCE == null) INSTANCE = Room.databaseBuilder(context, ToDoDatabase::class.java, "todo.db").build()
             }

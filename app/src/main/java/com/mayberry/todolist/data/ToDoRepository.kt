@@ -14,32 +14,33 @@ class ToDoRepository(context: Context) {
     suspend fun insertToDoData(toDo: ToDo) {
         toDoDao.insertToDoData(toDo)
     }
-
+    //获取ToDo数据
     fun getToDoData(): LiveData<List<ToDo>> {
         return toDoDao.getToDoData()
     }
-
+    //删除一条ToDo
     suspend fun deleteToDoData(toDo: ToDo) {
         toDoDao.deleteToDoData(toDo)
     }
-
+    //删除所有ToDo
     suspend fun deleteAllToDoData() {
         toDoDao.deleteAllToDoData()
     }
-
+    //更新数据
     suspend fun updateToDoData(toDo: ToDo) {
         toDoDao.updateToDoData(toDo)
     }
 
     //-------- 操作tagDao --------
+    //插入标签
     suspend fun insertTag(tagData: TagData) {
         tagDao.insertTag(tagData)
     }
-
+    //读取所有标签
     fun getAllTags(): LiveData<List<TagData>> {
         return tagDao.getAllTags()
     }
-
+    //删除标签
     suspend fun deleteTag(tagData: TagData) {
         tagDao.deleteTag(tagData)
     }

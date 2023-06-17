@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.mayberry.todolist.data.ToDoRepository
 import com.mayberry.todolist.data.model.TagData
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class DetailViewModel(application: Application): AndroidViewModel(application) {
@@ -14,7 +15,7 @@ class DetailViewModel(application: Application): AndroidViewModel(application) {
     var tagList:LiveData<List<TagData>> = repository.getAllTags()
 
     fun insertTag(tagData: TagData) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             repository.insertTag(tagData)
         }
     }

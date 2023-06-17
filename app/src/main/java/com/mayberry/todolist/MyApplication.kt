@@ -1,4 +1,4 @@
-package com.mayberry.todolist.fragment.main
+package com.mayberry.todolist
 
 import android.app.Application
 import android.content.Context

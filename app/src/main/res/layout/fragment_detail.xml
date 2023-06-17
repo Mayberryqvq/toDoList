@@ -4,18 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".fragment.detail.DetailFragment" >
+    tools:context=".fragment.detail.DetailFragment">
 
- <ImageView
-     android:id="@+id/imageView3"
-     android:layout_width="match_parent"
-     android:layout_height="match_parent"
-     android:scaleType="fitXY"
-     android:src="@drawable/detail_top_bg"
-     app:layout_constraintBottom_toBottomOf="parent"
-     app:layout_constraintEnd_toEndOf="parent"
-     app:layout_constraintStart_toStartOf="parent"
-     app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/detail_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/detail_top_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/view"
@@ -27,7 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/detail_bg"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
@@ -51,7 +51,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/welcome_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -64,7 +64,7 @@
         app:layout_constraintTop_toBottomOf="@+id/backBtn" />
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/profile_photo"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginEnd="40dp"
@@ -77,7 +77,7 @@
         app:srcCompat="@drawable/icon" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/separate_line"
         android:layout_width="160dp"
         android:layout_height="10dp"
         android:layout_marginTop="10dp"
@@ -88,19 +88,19 @@
         app:layout_constraintTop_toTopOf="@+id/view" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/target"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Create a task"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/imageView7"
-        app:layout_constraintStart_toStartOf="@id/imageView7"
-        app:layout_constraintTop_toBottomOf="@id/imageView7" />
+        app:layout_constraintEnd_toEndOf="@id/separate_line"
+        app:layout_constraintStart_toStartOf="@id/separate_line"
+        app:layout_constraintTop_toBottomOf="@id/separate_line" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/task_priority"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -111,7 +111,7 @@
         app:layout_constraintTop_toBottomOf="@+id/titleEditText" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/choose_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -122,7 +122,7 @@
         app:layout_constraintTop_toBottomOf="@+id/priorityMiddleBtn" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/choose_tag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -133,15 +133,26 @@
         app:layout_constraintTop_toBottomOf="@+id/dateBtn" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/task_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:hint="Task Description"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintStart_toStartOf="@+id/choose_tag"
         app:layout_constraintTop_toBottomOf="@id/tagContainer" />
+
+    <TextView
+        android:id="@+id/clearTagBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/underline_clear"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/addTagBtn"
+        app:layout_constraintTop_toTopOf="@id/addTagBtn" />
 
     <TextView
         android:id="@+id/addTagBtn"
@@ -151,24 +162,24 @@
         android:text="@string/underline_add"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/textView8"
-        app:layout_constraintTop_toTopOf="@id/textView8" />
+        app:layout_constraintStart_toEndOf="@id/choose_tag"
+        app:layout_constraintTop_toTopOf="@id/choose_tag" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/task_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Task Title"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/textView2"
-        app:layout_constraintTop_toBottomOf="@id/textView4" />
+        app:layout_constraintStart_toStartOf="@id/welcome_message"
+        app:layout_constraintTop_toBottomOf="@id/target" />
 
     <EditText
         android:id="@+id/titleEditText"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/round_solid_shape"
@@ -177,8 +188,8 @@
         android:paddingStart="20dp"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintStart_toStartOf="@+id/task_title"
+        app:layout_constraintTop_toBottomOf="@+id/task_title" />
 
     <TextView
         android:id="@+id/priorityHighBtn"
@@ -193,8 +204,8 @@
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@id/textView5" />
+        app:layout_constraintStart_toStartOf="@+id/task_priority"
+        app:layout_constraintTop_toBottomOf="@id/task_priority" />
 
     <TextView
         android:id="@+id/priorityMiddleBtn"
@@ -240,9 +251,9 @@
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:text="Select a date"
-        app:layout_constraintStart_toStartOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@id/textView7"
-        app:drawableStartCompat="@drawable/ic_calendar" />
+        app:drawableStartCompat="@drawable/ic_calendar"
+        app:layout_constraintStart_toStartOf="@+id/choose_date"
+        app:layout_constraintTop_toBottomOf="@id/choose_date" />
 
     <EditText
         android:id="@+id/descriptionTextView"
@@ -254,65 +265,64 @@
         android:background="#EFF0F2"
         android:gravity="start"
         android:padding="8dp"
-        android:text="TextView"
+        android:hint="TextView"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@id/view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintStart_toStartOf="@+id/task_description"
+        app:layout_constraintTop_toBottomOf="@+id/task_description" />
 
-     <LinearLayout
-         android:id="@+id/optionBtnContainer"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_marginEnd="8dp"
-         android:orientation="horizontal"
-         android:visibility="gone"
-         app:layout_constraintBottom_toBottomOf="@+id/menuBtn"
-         app:layout_constraintEnd_toStartOf="@+id/menuBtn"
-         app:layout_constraintTop_toTopOf="@+id/menuBtn"
-         tools:visibility="visible">
+    <LinearLayout
+        android:id="@+id/optionBtnContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/menuBtn"
+        app:layout_constraintEnd_toStartOf="@+id/menuBtn"
+        app:layout_constraintTop_toTopOf="@+id/menuBtn"
+        tools:visibility="visible">
 
-          <TextView
-              android:id="@+id/deleteBtn"
-              android:layout_width="68dp"
-              android:layout_height="27dp"
-              android:layout_gravity="center"
-              android:layout_weight="1"
-              android:background="@drawable/round_solid_shape"
-              android:backgroundTint="#BDC0D9"
-              android:gravity="center"
-              android:text="Delete"
-              android:textColor="#F7F7F8"
-              android:textSize="16sp"
-              android:textStyle="bold" />
+        <TextView
+            android:id="@+id/deleteBtn"
+            android:layout_width="68dp"
+            android:layout_height="27dp"
+            android:layout_weight="1"
+            android:background="@drawable/round_solid_shape"
+            android:backgroundTint="#BDC0D9"
+            android:gravity="center"
+            android:text="Delete"
+            android:textColor="#F7F7F8"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-          <TextView
-              android:id="@+id/saveBtn"
-              android:layout_width="68dp"
-              android:layout_height="27dp"
-              android:gravity="center"
-              android:layout_marginStart="8dp"
-              android:layout_weight="1"
-              android:background="@drawable/round_solid_shape"
-              android:backgroundTint="#BDC0D9"
-              android:text="Save"
-              android:textColor="#F7F7F8"
-              android:textSize="16sp"
-              android:textStyle="bold" />
+        <TextView
+            android:id="@+id/saveBtn"
+            android:layout_width="68dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/round_solid_shape"
+            android:backgroundTint="#BDC0D9"
+            android:gravity="center"
+            android:text="Save"
+            android:textColor="#F7F7F8"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-     </LinearLayout>
+    </LinearLayout>
 
-     <com.nex3z.flowlayout.FlowLayout
-         android:id="@+id/tagContainer"
-         android:layout_width="0dp"
-         android:layout_height="wrap_content"
-         android:layout_marginTop="8dp"
-         android:layout_marginEnd="40dp"
-         app:flChildSpacing="8dp"
-         app:flRowSpacing="8dp"
-         app:layout_constraintEnd_toEndOf="parent"
-         app:layout_constraintStart_toStartOf="@+id/textView8"
-         app:layout_constraintTop_toBottomOf="@+id/textView8" />
+    <com.nex3z.flowlayout.FlowLayout
+        android:id="@+id/tagContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="40dp"
+        app:flChildSpacing="8dp"
+        app:flRowSpacing="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/choose_tag"
+        app:layout_constraintTop_toBottomOf="@+id/choose_tag" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

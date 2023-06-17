@@ -28,7 +28,9 @@ class DetailFragment : Fragment() {
 
     private val mainViewModel: MainViewModel by viewModels()
     private val detailViewModel: DetailViewModel by viewModels()
+    //接受传递的参数
     private val mCurrentToDoArgs: DetailFragmentArgs by navArgs()
+    //将args解析出来
     private var mCurrentToDo: ToDo? = null
     private lateinit var binding: FragmentDetailBinding
     private var mPriority = Priority.LOW
@@ -55,20 +57,33 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //初始化优先级
         initPriorityEvent()
+        //初始化日期
         initDateEvent()
+        //初始化菜单按钮
         initMenuEvent()
+        //设置返回按钮点击事件
         binding.backBtn.setOnClickListener { goBack() }
+        //初始化显示数据
         initData()
+        //判断是保存还是更新
         if (mCurrentToDo != null) {
             binding.saveBtn.text = "Update"
         } else {
             binding.deleteBtn.visibility = View.INVISIBLE
         }
+        //addTag事件
         initAddTagEvent()
+        //clearTag事件
+        initClearTagEvent()
+        //观察tag标签属性
         detailViewModel.tagList.observe(viewLifecycleOwner) {
+            //将容器之前的子视图清除
             binding.tagContainer.removeAllViews()
+            //改变tag的显示
             it.forEach { tagData ->
+                //创建一个TextView显示tag
                 TextView(requireContext()).apply {
                     text = tagData.title
                     setBackgroundColor(Color.parseColor(tagData.bgColor))
@@ -99,8 +114,13 @@ class DetailFragment : Fragment() {
         }
     }
 
+    private fun initClearTagEvent() {
+        binding.tagContainer.removeAllViews()
+    }
+
     private fun initData() {
         mCurrentToDo?.let {
+            //需要将数据显示到界面上
             binding.titleEditText.setText(it.title)
             setPriority(it.priority)
             mDate.year = it.date.year
@@ -120,7 +140,6 @@ class DetailFragment : Fragment() {
             Priority.HIGH -> binding.priorityHighBtn.setTextColor(requireContext().getColor(R.color.primary))
             Priority.MIDDLE -> binding.priorityMiddleBtn.setTextColor(requireContext().getColor(R.color.primary))
             Priority.LOW -> binding.priorityLowBtn.setTextColor(requireContext().getColor(R.color.primary))
-
         }
     }
 
@@ -141,6 +160,7 @@ class DetailFragment : Fragment() {
         binding.saveBtn.setOnClickListener {
             if (checkInputValid()) {
                 if (mCurrentToDo == null) {
+                    //创建ToDo对象
                     val toDoData = ToDo(
                         0,
                         binding.titleEditText.text.toString(),
@@ -149,6 +169,7 @@ class DetailFragment : Fragment() {
                         mDate,
                         Tag(mTagData!!.title, mTagData!!.bgColor)
                     )
+                    //插入数据
                     mainViewModel.insertToDoData(toDoData)
                 } else {
                     mCurrentToDo?.title = binding.titleEditText.text.toString()
@@ -158,11 +179,13 @@ class DetailFragment : Fragment() {
                     if (mTagData != null) {
                         mCurrentToDo?.tag = Tag(mTagData!!.title, mTagData!!.bgColor)
                     }
+                    //更新数据
                     mainViewModel.updateToDoData(mCurrentToDo!!)
                 }
+                //返回上一个页面
                 goBack()
             } else {
-                Toast.makeText(requireContext(), "ToDo数据不能为空", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "ToDo数据不能为空", Toast.LENGTH_SHORT).show()
             }
         }
         binding.deleteBtn.setOnClickListener {
@@ -172,11 +195,12 @@ class DetailFragment : Fragment() {
     }
 
     private fun checkInputValid(): Boolean {
-        return binding.titleEditText.text.isNotEmpty() && mTagData != null
+        return binding.titleEditText.text.isNotEmpty() && binding.descriptionTextView.text.isNotEmpty() && mTagData != null
     }
 
     private fun optionBtnHideAnim() {
-        binding.optionBtnContainer.animate().alpha(0f).rotationX(90f).setDuration(300).setListener(object :Animator.AnimatorListener{
+        binding.optionBtnContainer.animate().alpha(0f).rotationX(90f).setDuration(300).setListener(object :Animator.AnimatorListener {
+
             override fun onAnimationStart(animation: Animator) {
                 TODO("Not yet implemented")
             }
@@ -193,11 +217,11 @@ class DetailFragment : Fragment() {
                 TODO("Not yet implemented")
             }
 
-
         })
     }
 
     private fun initPriorityEvent() {
+        //优先级按钮点击事件
         binding.priorityHighBtn.setOnClickListener {
             setPriority(Priority.HIGH)
         }
@@ -210,6 +234,7 @@ class DetailFragment : Fragment() {
     }
 
     private fun initDateEvent() {
+        //日期的点击事件
         binding.dateBtn.setOnClickListener {
             DatePickerDialog(
                 requireContext(),
@@ -217,6 +242,7 @@ class DetailFragment : Fragment() {
                     mDate.year = year
                     mDate.month = month
                     mDate.day = dayOfMonth
+                    //将日期显示到textView上
                     binding.dateBtn.text = "$year-${month + 1}-$dayOfMonth"
                 },
                 mDate.year, mDate.month, mDate.day

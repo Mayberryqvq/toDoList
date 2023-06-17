@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.mayberry.todolist.MyApplication
 import com.mayberry.todolist.R
 import com.mayberry.todolist.data.model.Priority
 import com.mayberry.todolist.data.model.ToDo
@@ -98,6 +99,7 @@ class MainFragment : Fragment() {
     /** 初始化recyclerView **/
     private fun initRecyclerView() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+        binding.recyclerView.adapter = mAdapter
         swipeToDelete()
     }
 

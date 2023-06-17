@@ -26,6 +26,7 @@ class ToDoAdapter: RecyclerView.Adapter<ToDoAdapter.MyViewHolder>() {
         private var timeTextView: TextView = itemView.findViewById(R.id.time)
         private var tagTextView: TextView = itemView.findViewById(R.id.tag)
 
+        //使用静态方法封装MyViewHolder的方法
         companion object {
             fun from(parent: ViewGroup): MyViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
@@ -34,17 +35,24 @@ class ToDoAdapter: RecyclerView.Adapter<ToDoAdapter.MyViewHolder>() {
             }
         }
 
+        //绑定数据
         @SuppressLint("setTextI18n")
         fun bindData(toDo: ToDo) {
+            //标题
             titleTextView.text = toDo.title
+            //标签
             tagTextView.text = toDo.tag.name
             tagTextView.backgroundTintList = ColorStateList.valueOf(Color.parseColor(toDo.tag.bgColor))
+            //优先级
             when(toDo.priority) {
                 Priority.HIGH -> priorityImageView.setImageResource(R.drawable.red_plate)
                 Priority.MIDDLE -> priorityImageView.setImageResource(R.drawable.yellow_plate)
                 Priority.LOW -> priorityImageView.setImageResource(R.drawable.green_plate)
             }
+            //时间
             dateTextView.text = "${toDo.date.month + 1}.${toDo.date.day}"
+
+            //添加点击事件
             itemView.setOnClickListener {
                 val action = MainFragmentDirections.actionMainFragmentToDetailFragment(toDo)
                 itemView.findNavController().navigate(action)

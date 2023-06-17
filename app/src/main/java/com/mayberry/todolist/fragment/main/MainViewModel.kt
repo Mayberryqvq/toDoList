@@ -10,9 +10,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainViewModel(application: Application): AndroidViewModel(application) {
-
+    //数据仓库
     private val repository = ToDoRepository(application)
-
+    //ToDo数据
     val toDoDataList: LiveData<List<ToDo>> = repository.getToDoData()
 
     fun insertToDoData(toDo: ToDo) {
@@ -21,12 +21,14 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
+    //删除一条ToDo
     fun deleteToDoData(toDo: ToDo) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteToDoData(toDo)
         }
     }
 
+    //删除所有ToDo
     fun deleteAllToDoData() {
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteAllToDoData()

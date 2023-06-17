@@ -1,2 +1,2 @@
 # toDoList
-MainFragment中的onViewCreated方法执行时存在问题，该问题暂时无法得到解决，本项目暂停维护
+修改部分bug，目前功能暂不完善。
