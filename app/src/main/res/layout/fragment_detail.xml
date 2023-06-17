@@ -3,21 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragment.detail.DetailFragment">
+    android:layout_height="wrap_content"
+    tools:context=".fragment.detail.DetailFragment" >
 
  <ImageView
      android:id="@+id/imageView3"
-     android:layout_width="0dp"
-     android:layout_height="wrap_content"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
      android:scaleType="fitXY"
      android:src="@drawable/detail_top_bg"
+     app:layout_constraintBottom_toBottomOf="parent"
      app:layout_constraintEnd_toEndOf="parent"
-     app:layout_constraintHorizontal_bias="0.0"
      app:layout_constraintStart_toStartOf="parent"
      app:layout_constraintTop_toTopOf="parent" />
 
- <View
+    <View
         android:id="@+id/view"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -35,18 +35,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="14dp"
-        android:src="@drawable/back"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/menuBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:src="@drawable/more_menu2"
+        android:src="@drawable/ic_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -55,7 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:text="Hello\nNoah Mayberry"
+        android:text="Hello,\nNoah Mayberry"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -78,13 +78,13 @@
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:layout_height="10dp"
         android:layout_marginTop="10dp"
         android:src="@drawable/separate_line"
-        app:layout_constraintEnd_toStartOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/view"
+        app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toTopOf="@+id/view" />
 
     <TextView
@@ -119,25 +119,25 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/priorityHighBtn"
-        app:layout_constraintTop_toBottomOf="@+id/priorityHighBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/priorityMiddleBtn" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Task Description"
+        android:text="Choose Tag"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/tagContainer" />
+        app:layout_constraintStart_toStartOf="@id/dateBtn"
+        app:layout_constraintTop_toBottomOf="@+id/dateBtn" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Task Description"
+        android:hint="Task Description"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textView8"
@@ -200,7 +200,7 @@
         android:id="@+id/priorityMiddleBtn"
         android:layout_width="87dp"
         android:layout_height="30dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
         android:background="@drawable/round_solid_shape"
         android:backgroundTint="#EBE43F"
         android:gravity="center"
@@ -209,14 +209,14 @@
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/priorityHighBtn"
-        app:layout_constraintTop_toBottomOf="@id/priorityHighBtn" />
+        app:layout_constraintStart_toEndOf="@+id/priorityHighBtn"
+        app:layout_constraintTop_toTopOf="@id/priorityHighBtn" />
 
     <TextView
         android:id="@+id/priorityLowBtn"
         android:layout_width="87dp"
         android:layout_height="30dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
         android:background="@drawable/round_solid_shape"
         android:backgroundTint="#3FEBA2"
         android:gravity="center"
@@ -225,8 +225,8 @@
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/priorityMiddleBtn"
-        app:layout_constraintTop_toBottomOf="@id/priorityMiddleBtn" />
+        app:layout_constraintStart_toEndOf="@+id/priorityMiddleBtn"
+        app:layout_constraintTop_toTopOf="@id/priorityMiddleBtn" />
 
     <TextView
         android:id="@+id/dateBtn"
@@ -235,14 +235,14 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/round_solid_shape"
         android:backgroundTint="#F6F8FA"
-        android:drawableStart="@drawable/bag_dark"
         android:drawablePadding="8dp"
         android:gravity="center"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:text="Select a date"
         app:layout_constraintStart_toStartOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@id/textView7" />
+        app:layout_constraintTop_toBottomOf="@id/textView7"
+        app:drawableStartCompat="@drawable/ic_calendar" />
 
     <EditText
         android:id="@+id/descriptionTextView"
@@ -281,6 +281,7 @@
               android:layout_weight="1"
               android:background="@drawable/round_solid_shape"
               android:backgroundTint="#BDC0D9"
+              android:gravity="center"
               android:text="Delete"
               android:textColor="#F7F7F8"
               android:textSize="16sp"
@@ -290,7 +291,7 @@
               android:id="@+id/saveBtn"
               android:layout_width="68dp"
               android:layout_height="27dp"
-              android:layout_gravity="center"
+              android:gravity="center"
               android:layout_marginStart="8dp"
               android:layout_weight="1"
               android:background="@drawable/round_solid_shape"

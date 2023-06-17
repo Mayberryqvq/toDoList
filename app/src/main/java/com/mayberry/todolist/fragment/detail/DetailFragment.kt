@@ -177,16 +177,22 @@ class DetailFragment : Fragment() {
 
     private fun optionBtnHideAnim() {
         binding.optionBtnContainer.animate().alpha(0f).rotationX(90f).setDuration(300).setListener(object :Animator.AnimatorListener{
-
-            override fun onAnimationStart(animation: Animator?) { }
-
-            override fun onAnimationEnd(animation: Animator?) {
-                binding.optionBtnContainer.visibility = View.GONE
+            override fun onAnimationStart(animation: Animator) {
+                TODO("Not yet implemented")
             }
 
-            override fun onAnimationCancel(animation: Animator?) { }
+            override fun onAnimationEnd(animation: Animator) {
+                TODO("Not yet implemented")
+            }
 
-            override fun onAnimationRepeat(animation: Animator?) { }
+            override fun onAnimationCancel(animation: Animator) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onAnimationRepeat(animation: Animator) {
+                TODO("Not yet implemented")
+            }
+
 
         })
     }

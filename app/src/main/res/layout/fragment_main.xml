@@ -15,10 +15,8 @@
         android:src="@drawable/main_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/joyful_face"
@@ -58,9 +56,9 @@
         android:text="Schedules"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/bg"
+        app:layout_constraintStart_toStartOf="@+id/bg"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/bg"
+        app:layout_constraintEnd_toEndOf="@+id/bg"
         app:layout_constraintTop_toTopOf="@id/bg" />
 
     <ImageView
@@ -83,7 +81,7 @@
         android:background="@drawable/round_solid_shape"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView" >
+        app:layout_constraintTop_toBottomOf="@+id/textView" >
 
         <TextView
             android:id="@+id/top_title"
@@ -177,7 +175,7 @@ The following code sample shows a typical use, with an XML layout and code to mo
         android:layout_height="50dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/round_solid_shape"
-        android:drawableLeft="@drawable/bag"
+        android:drawableLeft="@drawable/ic_calendar_white"
         android:paddingLeft="70dp"
         android:text="Add New"
         android:textAlignment="textStart"
